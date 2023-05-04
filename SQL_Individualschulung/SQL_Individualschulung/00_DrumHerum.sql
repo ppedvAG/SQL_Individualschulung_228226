@@ -9,7 +9,7 @@ Einstellungen
 
 
 
-Azure DAtaStudio
+Azure DataStudio
 erweiterbar... Plugins etc
 aber ersetzt nicht SSMS
 
