@@ -48,16 +48,6 @@ select avg(maxFr) from cte
 
 select employeeid , reportsto from employees
 
- with cte (sp1 , sp2)
- as
- (
- Anker  
- UNION ALL
- select ... tab inner join cte tab.sp1 = cte.sp2
- )
- select * from cte
-
-
  with cteang 
  as
  (

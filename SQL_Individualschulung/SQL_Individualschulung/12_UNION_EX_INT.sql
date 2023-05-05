@@ -1,6 +1,73 @@
 --UNION EXCEPT INTERSECT
 
 select 100
+UNION 
+select 200
+
+select * from customers where country = 'USA'
+UNION
+select * from customers where country = 'UK'
+order by customerid
+
+select 'A', 100, 200
+UNION 
+select 'B',100, NULL
+
+--bei UNION mmüssen gleich viele Spalten sein,
+--kompatibel Datentyp
+
+select 100
+UNION
+select 200
+UNION
+select 300
+UNION ALL
+select 100
+
+
+
+
+
+
+
+
+
+
+
+select * from kunden
+select * from customers
+
+--welche DS sind noch identisch zwischen beiden Tabellen
+
+select * from kunden
+intersect
+select * from customers
+
+select customerid from customers
+intersect
+select customerid from kunden
+
+select * from customers
+except
+select * from kunden
+
+
+
+select * from kunden
+except
+select * from customers
+
+
+
+
+
+
+
+
+
+
+
+select 100
 UNION	ALL
 select 200
 UNION 	ALL

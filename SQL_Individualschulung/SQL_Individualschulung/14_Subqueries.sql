@@ -1,6 +1,42 @@
 --SubSelect
 
 
+select Sp1
+		, (select ...) --darf nur einen Wert und eine Zeile zurückgeben 
+		, ...
+from (select....)  t
+where 
+		sp1 > = ..(select ..) --darf nur ein Wert rauskommen
+		sp1 in (select Sp from tabelle..)-- einen Spalte aber mit vielen Zeilen
+
+
+		select fRngSumme(BestNr)
+
+select fRngsumme(orderid), * from orders
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 select (select top 1 freight from orders) as Sp ,* from (select * from orders) o
 where 

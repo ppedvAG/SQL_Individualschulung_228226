@@ -17,6 +17,7 @@ returns table
 as
 return
 select @par1 as Sp1, @par2 as sp2
+GO
 
 select * from ftab(100,200)
 
@@ -46,3 +47,56 @@ END
 GO
 
 select * from fMSTVF(10)
+
+
+
+--------BSP
+
+--Skalarfunktion
+
+select dbo.funk(100) --> Wert zurück
+
+create function fBrutto(@netto money) returns money
+as
+BEGIN
+          return(select @netto*1.22)
+END
+
+select dbo.fbrutto (100)
+
+ --hier di
+select freight, dbo.fbrutto(freight) from orders --hier ist die F() ok
+where dbo.fbrutto(freight) < 100--schlecht weil zeilneweises druchgehen  scan
+
+
+select dbo.fRngSumme(10248) -- 440
+
+select * from [order details]
+
+
+
+create function dbo.fRngSumme(@bestId int) returns money
+as
+BEGIN
+		return  (
+				select sum(unitprice*quantity) from [order details] where orderid = @BestId
+				)
+END
+
+select dbo.fRngSumme(10248)--440
+
+
+select * from sys.all_sql_modules where definition like 'create view%' and definition like '%Schemabinding%'
+
+
+
+ALTER DATABASE [Northwind] SET COMPATIBILITY_LEVEL = 150
+
+
+select dbo.fRngSumme(orderid),* from orders
+where dbo.fRngSumme(orderid) > 500
+
+
+alter table orders add RngSumme as dbo.fRngSumme(orderid)
+
+select * from orders where Rngsumme < 500
