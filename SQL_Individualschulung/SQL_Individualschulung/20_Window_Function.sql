@@ -18,7 +18,6 @@ select
 from orders
 
 
-
 select 
 	shipcountry, freight,
 Ntile(5) over (order by freight asc)
@@ -74,6 +73,13 @@ select shipcountry, freight,
 	row_number() over (partition by shipcountry order by freight asc)  as Rang
 from orders)
 select * from cte where   Rang = 1
+
+
+
+select shipcountry,orderid,  freight , min(freight) 
+from orders
+group by shipcountry, orderid, freight
+
 
 ;with cte
 as
@@ -212,6 +218,8 @@ select
 	 from [Order Details]
 	 order by 1,4
 
+	 select eomonth(getdate())
+
  -----------------------------------------------------------------------------------------------------
 
 
@@ -268,7 +276,7 @@ from [order details]
 
 
 
---best verkaufte Product pro Jahr und MItarbeiter und im Verglich zu Gesamtumsatz
+--best verkaufte Product pro Jahr und MItarbeiter und im Vergleich zu Gesamtumsatz
 --Wie hoch war also der Anteil eines Verkäufers pro Produkt und Jahr am Gesamtumsatz
 --im Jahr 1996 Produkt Pavlova
 
